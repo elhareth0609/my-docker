@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: temp-pod
+spec:
+  containers:
+  - name: temp-container
+    image: busybox
+    command: ["sleep", "3600"]
+    volumeMounts:
+    - mountPath: /mnt/data
+      name: laravel-storage
+  volumes:
+  - name: laravel-storage
+    persistentVolumeClaim:
+      claimName: larave-pvc
